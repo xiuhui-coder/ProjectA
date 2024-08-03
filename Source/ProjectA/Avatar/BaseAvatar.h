@@ -4,7 +4,11 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "GameFramework/SpringArmComponent.h"
 #include "BaseAvatar.generated.h"
+
+class USpringArmComponent;
+class UCameraComponent;
 
 UCLASS()
 class PROJECTA_API ABaseAvatar : public ACharacter
@@ -18,6 +22,16 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+
+	UPROPERTY(VisibleAnywhere)
+	USpringArmComponent* SpringArmComponent;
+	
+	UPROPERTY(VisibleAnywhere)
+	UCameraComponent* CameraComponent;
+
+	void MoveForward(const float Val);
+
+	void MoveRight(const float Val);
 
 public:	
 	// Called every frame
